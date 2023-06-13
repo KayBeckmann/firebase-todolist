@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kay-todolist": {
+      "hosting": {
+        "firebase-todolist": [
+          "kay-todolist"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kay-todolist"
+  }
+}
