@@ -19,9 +19,5 @@ export class AppComponent {
   constructor() {
     const todosCollection = collection(this.firestore, 'todos');
     this.todos$ = collectionData(todosCollection);
-    this.todos$.subscribe((newTodos)=>{
-      console.log(`Neue Todos sind: `, newTodos);
-      
-    })
   }
 }
