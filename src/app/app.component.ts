@@ -9,22 +9,19 @@ interface Item {
 };
 @Component({
   selector: 'app-root',
-  template: `
-  <ul>
-    <li *ngFor="let item of item$ | async">
-      {{ item.name }}
-    </li>
-  </ul>
-`
-  // templateUrl: './app.component.html',
-  // styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  item$: Observable<any>;
+  todos$: Observable<any>; // Observable -> Bekommt ein Update bei Änderung
   firestore: Firestore = inject(Firestore);
 
   constructor() {
-    const itemCollection = collection(this.firestore, 'todos');
-    this.item$ = collectionData(itemCollection);
+    const todosCollection = collection(this.firestore, 'todos');
+    this.todos$ = collectionData(todosCollection);
+    this.todos$.subscribe((newTodos)=>{
+      console.log(`Neue Todos sind: `, newTodos);
+      
+    })
   }
 }
