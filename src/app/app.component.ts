@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { inject } from '@angular/core';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, doc } from '@angular/fire/firestore';
+import { setDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 interface Item {
@@ -23,7 +24,8 @@ export class AppComponent {
   }
 
   addTodo(){
-    console.log(this.userinput);
-    
+    const todosCollection = collection(this.firestore, `todos`);
+    setDoc(doc(todosCollection),{name:this.userinput})
+    this.userinput = ''
   }
 }
