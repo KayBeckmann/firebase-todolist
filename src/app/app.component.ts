@@ -15,9 +15,15 @@ interface Item {
 export class AppComponent {
   todos$: Observable<any>; // Observable -> Bekommt ein Update bei Änderung
   firestore: Firestore = inject(Firestore);
+  userinput:String = '';
 
   constructor() {
     const todosCollection = collection(this.firestore, 'todos');
     this.todos$ = collectionData(todosCollection);
+  }
+
+  addTodo(){
+    console.log(this.userinput);
+    
   }
 }
